@@ -1,0 +1,5 @@
+aws_region  = "ap-south-2"
+vpc_name    = "terraform-vpc"
+vpc_cidr    = "10.0.0.0/16"
+environment = "dev"
+subnet_cidr = "10.0.1.0/24"
