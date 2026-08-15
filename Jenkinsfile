@@ -11,7 +11,15 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                sh 'terraform init -reconfigure'
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'aws-terraform',
+                        usernameVariable: 'AWS_ACCESS_KEY_ID',
+                        passwordVariable: 'AWS_SECRET_ACCESS_KEY'
+                    )
+                ]) {
+                    sh 'terraform init -reconfigure'
+                }
             }
         }
 
